@@ -1,0 +1,189 @@
+<html>
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS only grid system and button style -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- Google Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<style>
+		.trigger {
+			cursor: pointer;
+			text-align: center;
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			transform: scale(1.1);
+			z-index: 99;
+		}
+
+		.modal-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			padding: 1rem 0;
+			width: 50%;
+			min-width: 280px;
+			border-radius: 0.5rem;
+		}
+
+		.modal-titulo {
+			color: blue;
+			line-height: 2.25rem;
+		}
+
+		.modal-header {
+			border-bottom: 2px solid #e1e1e1;
+		}
+
+		.close-button {
+			float: right;
+			width: 1.5rem;
+			line-height: 1.5rem;
+			text-align: center;
+			cursor: pointer;
+			border-radius: 0.25rem;
+			color: #b8b8b8;
+		}
+
+		.close-button:hover {
+			color: #969494;
+		}
+
+		.show-modal {
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+			transition: visibility 0s linear 0s, opacity 0.1s 0s, transform 0.1s;
+		}
+
+		#tutoriais.modal {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			transform: none;
+		}
+
+		#tutoriais.modal .modal-content {
+			top: 0;
+			left: 50%;
+			height: 100%;
+			padding: 1.875rem 3.125rem;
+			transform: none;
+			border-radius: 0;
+		}
+
+		#tutoriais.modal .modal-content.scrollbar-vertical {
+			max-height: none;
+		}
+	</style>
+
+	<title>Full screen Modal only css and jquery trigger</title>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="">
+					<h2>Full screen Modal only css and jquery trigger</h2>
+
+					<!-- Modal -->
+					<div class="modal" data-id="modal-1">
+						<div class="modal-content">
+							<div class="modal-header">
+								<i class="material-icons notranslate close-button">cancel</i>
+								<h2 class="modal-titulo">Título do Modal 1</h2>
+							</div>
+							<div class="row modal-body">
+								<h3>Corpo do Modal</h3>
+							</div>
+
+							<div class="modal-footer">
+								<h4>Rodapé do Modal</h4>
+								<div class="buttons">
+									<a href="#" class="btn btn-danger" data-toggle="modal">Cadastrar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Modal -->
+					<!-- Modal -->
+					<div class="modal" data-id="modal-2">
+						<div class="modal-content">
+							<div class="modal-header">
+								<i class="material-icons notranslate close-button">cancel</i>
+								<h2 class="modal-titulo">Título do Modal 2</h2>
+							</div>
+							<div class="row modal-body">
+								<h3>Corpo do Modal</h3>
+							</div>
+
+							<div class="modal-footer">
+								<h4>Rodapé do Modal</h4>
+								<div class="buttons">
+									<a href="#" class="btn btn-danger" data-toggle="modal">Cadastrar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Modal -->
+
+					<div class="content">
+						<div class="btn btn-primary trigger" data-id="1">Modal 1</div>
+						<div class="btn btn-secondary trigger" data-id="2"> Modal 2</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+
+<script>
+	jQuery(document).ready(function ($) {
+		//control modal on click
+
+		$('.trigger').on('click', function () {
+			$('#overlay').fadeIn();
+			let id = $(this).data('id');
+			$('.modal[data-id="modal-' + id + '"]').fadeIn();
+		});
+
+		$('.close-button').on('click', function () {
+			$('#overlay').fadeOut();
+			$('.modal').fadeOut();
+		});
+		$('.close-modal').on('click', function () {
+			$('#overlay').fadeOut();
+			$('.modal').fadeOut();
+		});
+	});
+</script>
+
+</html>
